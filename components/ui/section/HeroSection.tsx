@@ -5,6 +5,8 @@ import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
 import { AnimatedCard } from "@/components/ui/animated-cards";
 import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
+import model from "@/images/profile.png"
+import logo from "@/images/mylogo.png"
 
 const people = [
   {
@@ -57,7 +59,7 @@ function HeroSection() {
       <div className="max-w-[600px] w-[90%] mx-auto py-[30px]">
         <a href="/">
           <Image
-            src=""
+            src={logo}
             width={120}
             height={80}
             className="max-h-[80px] h-full  object-contain object-center"
@@ -65,7 +67,6 @@ function HeroSection() {
           />
         </a>
         <div className="flex flex-col justify-center h-[80%]">
-          <span className="text-[#4e69e0] font-[600]">It's Me</span>
           <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight">
             Aayush KS <br />
             Frontend Web <br />
@@ -84,11 +85,11 @@ function HeroSection() {
           </div>
         </div>
       </div>
-      <div className="w-full h-full flex items-end bg-[#0d0d0e] ">
+      <div className="w-full h-full flex mt-[-40px]  ">
         <Image
-          src="/images/63019182.webp"
+          src={model}
           width={800}
-          height={1200}
+          height={3000}
           alt="profilePic"
           className="w-full max-h-[90vh] object-contain object-bottom"
         ></Image>
