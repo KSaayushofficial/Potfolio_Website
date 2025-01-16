@@ -81,7 +81,7 @@ export function Dock() {
     },
   ];
   return (
-    <div className="fixed flex left-[90%] translate-x-[-90%] md:left-[50%] md:translate-x-[-50%] bottom-[50px] z-[101]">
+    <div className="fixed flex left-[90%] translate-x-[-90%] md:left-[50%] md:translate-x-[-50%] bottom-[15px] z-[101]">
       <FloatingDock desktopClassName="bg-neutral-900"
         mobileClassName="translate-y-20" // only for demo, remove for production
         items={links}

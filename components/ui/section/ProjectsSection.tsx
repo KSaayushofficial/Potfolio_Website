@@ -1,91 +1,309 @@
 "use client";
 import Image from "next/image";
-import React from "react";
-import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
+import React, { useEffect, useId, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useOutsideClick } from "@/hooks/use-outside-click";
+import { Cover } from "@/components/ui/cover";
 
 export function Projects() {
-  const cards = data.map((card, index) => (
-    <Card key={card.src} card={card} index={index} />
-  ));
+  const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
+    null
+  );
+  const ref = useRef<HTMLDivElement>(null);
+  const id = useId();
+
+  useEffect(() => {
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setActive(false);
+      }
+    }
+
+    if (active && typeof active === "object") {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [active]);
+
+  useOutsideClick(ref, () => setActive(null));
 
   return (
-    <div className="w-full h-full py-20" id="projects">
-      <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
-        Recent Projects
-      </h2>
-      <Carousel items={cards} />
-    </div>
+    <>
+      <div className="px-8 flex flex-col justify-center items-center">
+        <h2 className="mx-auto text-xl md:text-4xl lg:text-5xl font-sans relative z-20 font-bold tracking-tight">
+          <Cover>My Projects</Cover>
+        </h2>
+        <p className="max-w-xl text-[1rem] mb-[50px] mt-[20px] text-center md:text-lg text-neutral-500 dark:text-neutral-400">
+          My So-called Projects
+        </p>
+      </div>
+      <AnimatePresence>
+        {active && typeof active === "object" && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/20 h-full w-full z-10"
+          />
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {active && typeof active === "object" ? (
+          <div className="fixed inset-0  grid place-items-center z-[100]">
+            <motion.button
+              key={`button-${active.title}-${id}`}
+              layout
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 1,
+              }}
+              exit={{
+                opacity: 0,
+                transition: {
+                  duration: 0.05,
+                },
+              }}
+              className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6"
+              onClick={() => setActive(null)}
+            >
+              <CloseIcon />
+            </motion.button>
+            <motion.div
+              layoutId={`card-${active.title}-${id}`}
+              ref={ref}
+              className="w-full max-w-[500px]  h-full md:h-fit md:max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
+            >
+              <motion.div layoutId={`image-${active.title}-${id}`}>
+                <Image
+                  priority
+                  width={200}
+                  height={200}
+                  src={active.src}
+                  alt={active.title}
+                  className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"
+                />
+              </motion.div>
+
+              <div>
+                <div className="flex justify-between items-start p-4">
+                  <div className="">
+                    <motion.h3
+                      layoutId={`title-${active.title}-${id}`}
+                      className="font-bold text-black dark:text-neutral-200"
+                    >
+                      {active.title}
+                    </motion.h3>
+                    <motion.p
+                      layoutId={`description-${active.description}-${id}`}
+                      className="text-black dark:text-neutral-400"
+                    >
+                      {active.description}
+                    </motion.p>
+                  </div>
+
+                  <motion.a
+                    layoutId={`button-${active.title}-${id}`}
+                    href={active.ctaLink}
+                    target="_blank"
+                    className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white"
+                  >
+                    {active.ctaText}
+                  </motion.a>
+                </div>
+                <div className="pt-4 relative px-4">
+                  <motion.div
+                    layout
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="text-black text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
+                  >
+                    {typeof active.content === "function"
+                      ? active.content()
+                      : active.content}
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        ) : null}
+      </AnimatePresence>
+      <ul className="max-w-2xl mx-auto w-full gap-4">
+        {cards.map((card, index) => (
+          <motion.div
+            layoutId={`card-${card.title}-${id}`}
+            key={`card-${card.title}-${id}`}
+            onClick={() => setActive(card)}
+            className="p-4 flex flex-col md:flex-row justify-between items-center hover:bg-neutral-50 hover:text-black rounded-xl cursor-pointer"
+          >
+            <div className="flex gap-4 flex-col md:flex-row ">
+              <motion.div layoutId={`image-${card.title}-${id}`}>
+                <Image
+                  width={100}
+                  height={100}
+                  src={card.src}
+                  alt={card.title}
+                  className="h-40 w-40 md:h-14 md:w-14 rounded-lg object-cover hover:text-black object-top"
+                />
+              </motion.div>
+              <div className="">
+                <motion.h3
+                  layoutId={`title-${card.title}-${id}`}
+                  className="font-medium text-neutral-200 hover:text-black dark:text-neutral-200 text-center md:text-left"
+                >
+                  {card.title}
+                </motion.h3>
+                <motion.p
+                  layoutId={`description-${card.description}-${id}`}
+                  className="text-neutral-500 dark:text-neutral-400 text-center md:text-left"
+                >
+                  {card.description}
+                </motion.p>
+              </div>
+            </div>
+            <motion.button
+              layoutId={`button-${card.title}-${id}`}
+              className="px-4 py-2 text-sm rounded-full font-bold bg-gray-100 hover:bg-green-500 hover:text-black text-black mt-4 md:mt-0"
+            >
+              {card.ctaText}
+            </motion.button>
+          </motion.div>
+        ))}
+      </ul>
+    </>
   );
 }
 
-const DummyContent = () => {
+export const CloseIcon = () => {
   return (
-    <>
-      {[...new Array(3).fill(1)].map((_, index) => {
-        return (
-          <div
-            key={"dummy-content" + index}
-            className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4"
-          >
-            <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
-              <span className="font-bold text-neutral-700 dark:text-neutral-200">
-                The first rule of Apple club is that you boast about Apple club.
-              </span>{" "}
-              Keep a journal, quickly jot down a grocery list, and take amazing
-              class notes. Want to convert those notes to text? No problem.
-              Langotiya jeetu ka mara hua yaar is ready to capture every
-              thought.
-            </p>
-            <Image
-              src="https://assets.aceternity.com/macbook.png"
-              alt="Macbook mockup from Aceternity UI"
-              height="500"
-              width="500"
-              className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain"
-            />
-          </div>
-        );
-      })}
-    </>
+    <motion.svg
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+      }}
+      exit={{
+        opacity: 0,
+        transition: {
+          duration: 0.05,
+        },
+      }}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-4 w-4 text-black"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M18 6l-12 12" />
+      <path d="M6 6l12 12" />
+    </motion.svg>
   );
 };
 
-const data = [
+const cards = [
   {
-    category: "Artificial Intelligence",
-    title: "You can do more with AI.",
-    src: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?q=80&w=3556&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    content: <DummyContent />,
+    description: "Basically contributed nothing😑🙄🥱💀",
+    title: "Faith Answered",
+    src: "https://faithanswered.com/build/assets/logo-CY90ruqA.svg",
+    ctaText: "View",
+    ctaLink: "https://ui.aceternity.com/templates",
+    content: () => {
+      return <p>Awkward hehe😁😐🥴🤡</p>;
+    },
   },
   {
-    category: "Productivity",
-    title: "Enhance your productivity.",
-    src: "https://images.unsplash.com/photo-1531554694128-c4c6665f59c2?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    content: <DummyContent />,
+    description: "Created with NextJs",
+    title: "Apple website clone",
+    src: "https://pbs.twimg.com/ext_tw_video_thumb/1797724517277806597/pu/img/TVpc8Y77wt6pMw7h.jpg",
+    ctaText: "View",
+    ctaLink: "https://ui.aceternity.com/templates",
+    content: () => {
+      return (
+        <p>
+          "I created an Apple website clone using Next.js, leveraging its
+          server-side rendering and static site generation features to enhance
+          performance. The clone mirrors the clean and minimalist design of the
+          original Apple website, using a responsive layout to ensure a smooth
+          user experience across devices. I used components from React, CSS
+          modules for styling, and integrated dynamic routes to showcase
+          products seamlessly. Additionally, I incorporated animations and
+          transitions to give the site a modern and interactive feel, while
+          keeping the code base optimized and clean."
+        </p>
+      );
+    },
   },
   {
-    category: "Product",
-    title: "Launching the new Apple Vision Pro.",
-    src: "https://images.unsplash.com/photo-1713869791518-a770879e60dc?q=80&w=2333&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    content: <DummyContent />,
+    description: "Created with Html,Css and JS",
+    title: "E-commerce Website",
+    src: "https://logocreator.io/wp-content/uploads/2023/11/BlogThumbnail_755ead76-44e0-4627-bc93-55b0ad9c6722.jpg",
+    ctaText: "View",
+    ctaLink: "https://ui.aceternity.com/templates",
+    content: () => {
+      return (
+        <p>
+          I created an e-commerce website using CoreJS, HTML, and CSS. The
+          project involved designing a clean, user-friendly interface for an
+          online store, showcasing product listings with detailed descriptions
+          and images. I used CoreJS for functionality such as handling user
+          interactions, managing state, and implementing essential features like
+          product sorting, cart management, and checkout. HTML provided the
+          structure, while CSS ensured the website was responsive and visually
+          appealing across devices. The project helped me build a solid
+          foundation in both front-end and JavaScript development for web
+          applications.
+        </p>
+      );
+    },
+  },
+  {
+    description: "Created with Html,Css and CoreJs",
+    title: "Hackial-Social media app",
+    src: "https://static.vecteezy.com/system/resources/previews/023/986/939/non_2x/tiktok-logo-tiktok-logo-transparent-tiktok-icon-transparent-free-free-png.png",
+    ctaText: "View",
+    ctaLink: "https://github.com/KSaayushofficial/Stop-Watch",
+    content: () => {
+      return (
+        <p>
+          I created a social media website named "Hackial" using CoreJS, HTML,
+          and CSS. The platform is designed to offer users an engaging
+          experience with features typical of modern social media sites, such as
+          user profiles, interactive posts, and real-time communication
+          elements. I utilized CoreJS for the website’s logic and interactivity,
+          ensuring a smooth and dynamic experience. The design was made
+          responsive and accessible, with CSS handling the layout, animations,
+          and styling. This project allowed me to combine fundamental web
+          technologies to build a complete, functional social media platform.
+        </p>
+      );
+    },
   },
 
   {
-    category: "Product",
-    title: "Maps for your iPhone 15 Pro Max.",
-    src: "https://images.unsplash.com/photo-1599202860130-f600f4948364?q=80&w=2515&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    content: <DummyContent />,
-  },
-  {
-    category: "iOS",
-    title: "Photography just got better.",
-    src: "https://images.unsplash.com/photo-1602081957921-9137a5d6eaee?q=80&w=2793&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    content: <DummyContent />,
-  },
-  {
-    category: "Hiring",
-    title: "Hiring for a Staff Software Engineer",
-    src: "https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    content: <DummyContent />,
+    description: "I am not a machine bro.It's ongoing...",
+    title: "Direkty- A business directory platform",
+    src: "https://www.shutterstock.com/image-vector/pixel-location-point-sign-symbol-600nw-1977711641.jpg",
+    ctaText: "View",
+    ctaLink: "https://ui.aceternity.com/templates",
+    content: () => {
+      return (
+        <p>
+          Suspense..Development in progress! Stay Back🚫🙅‍♂️
+        </p>
+      );
+    },
   },
 ];

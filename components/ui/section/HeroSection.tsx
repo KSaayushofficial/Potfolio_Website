@@ -55,7 +55,7 @@ const people = [
 
 function HeroSection() {
   return (
-    <div className="w-full overflow-x-hidden  min-h-screen grid lg:grid-cols-[1fr_0.6fr_0.4fr] gap-[20px]">
+    <div className="w-full overflow-x-hidden  min-h-screen grid lg:grid-cols-[1fr_0.6fr_0.6fr] gap-[20px]">
       <div className="max-w-[600px] w-[90%] mx-auto py-[30px]">
         <a href="/">
           <Image
@@ -85,13 +85,13 @@ function HeroSection() {
           </div>
         </div>
       </div>
-      <div className="w-full h-full flex mt-[-40px]  ">
+      <div className="w-full h-full flex mt-[-60px]  ">
         <Image
           src={model}
           width={800}
           height={3000}
           alt="profilePic"
-          className="w-full max-h-[90vh] object-contain object-bottom"
+          className="w-full max-h-[90vh] mr-[100px] object-contain object-bottom"
         ></Image>
       </div>
       <div className="w-[90%] mx-auto py-[30px] flex flex-col items-center z-2">
