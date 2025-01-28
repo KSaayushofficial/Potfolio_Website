@@ -55,7 +55,7 @@ export const Cover = ({
           >
             <motion.div
               animate={{
-                translateX: ["-50%", "0%"],
+                translateX: ["-30%", "30%"],
               }}
               transition={{
                 translateX: {
@@ -90,8 +90,8 @@ export const Cover = ({
         <Beam
           key={index}
           hovered={hovered}
-          duration={Math.random() * 2 + 1}
-          delay={Math.random() * 2 + 1}
+          duration={Math.random() * 1 + 1}
+          delay={Math.random() * 1+ 1}
           width={containerWidth}
           style={{
             top: `${position}px`,

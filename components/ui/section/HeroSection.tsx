@@ -85,7 +85,7 @@ function HeroSection() {
           </div>
         </div>
       </div>
-      <div className="w-full h-full flex mt-[-60px]  ">
+      <div className="w-full h-full flex mt-[30px]  ">
         <Image
           src={model}
           width={800}
