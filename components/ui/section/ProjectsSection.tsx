@@ -95,7 +95,7 @@ export function Projects() {
                   <div className="">
                     <motion.h3
                       layoutId={`title-${active.title}-${id}`}
-                      className="font-bold text-black dark:text-neutral-200"
+                      className="font-bold dark:text-black text-neutral-200"
                     >
                       {active.title}
                     </motion.h3>
@@ -111,7 +111,7 @@ export function Projects() {
                     layoutId={`button-${active.title}-${id}`}
                     href={active.ctaLink}
                     target="_blank"
-                    className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white"
+                    className="px-4 py-3 text-sm rounded-full font-bold bg-green-500"
                   >
                     {active.ctaText}
                   </motion.a>
@@ -155,7 +155,7 @@ export function Projects() {
               <div className="">
                 <motion.h3
                   layoutId={`title-${card.title}-${id}`}
-                  className="font-medium text-neutral-200 hover:text-black dark:text-neutral-200 text-center md:text-left"
+                  className="font-medium  hover:text-black dark:text-neutral-200 text-center md:text-left"
                 >
                   {card.title}
                 </motion.h3>

@@ -48,7 +48,7 @@ export function Dock() {
       icon: (
         <FaFileAlt className="h-full w-full text-neutral-50 dark:text-neutral-300" />
       ),
-      href: "#resume",
+      href: "https://drive.google.com/file/d/14egMC9KU2cJIqqjQ4zA9TRWHAvwQVUoc/view?usp=sharing",
     },
     {
       title: "Testimonials",
@@ -63,7 +63,7 @@ export function Dock() {
       icon: (
         <FaFacebook className="h-full w-full text-neutral-50 dark:text-neutral-300" />
       ),
-      href: "https://www.facebook.com/profile.php?id=100057168914802" ,
+      href: "https://www.facebook.com/profile.php?id=100057168914802",
     },
     {
       title: "GitHub",

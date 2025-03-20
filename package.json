@@ -9,7 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@tabler/icons-react": "^3.28.1",
+    "@radix-ui/react-label": "^2.1.2",
+    "@tabler/icons-react": "^3.31.0",
     "@tsparticles/engine": "^3.7.1",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.7.1",
@@ -17,6 +18,7 @@
     "cobe": "^0.6.3",
     "framer-motion": "^11.18.0",
     "mini-svg-data-uri": "^1.4.4",
+    "motion": "^12.5.0",
     "next": "15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

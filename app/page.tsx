@@ -1,3 +1,4 @@
+import Contact from "@/components/ui/section/Contact";
 import { Dock } from "@/components/ui/section/FloatingDock";
 import { Footer } from "@/components/ui/section/FooterSection";
 import HeroSection from "@/components/ui/section/HeroSection";
@@ -15,6 +16,7 @@ export default function Home() {
 <Projects />
 <Resume />
 <Testimonials />
+<Contact />
 <Footer />
 <Dock />
 </>
