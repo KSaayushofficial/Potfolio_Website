@@ -5,7 +5,7 @@ import { Input } from "../input";
 import { cn } from "@/lib/utils";
 import { Cover } from "../cover";
 
-export function SignupFormDemo() {
+export function Contact() {
       const [loadingMessage,setLoadingMessage] = useState({
             loading:false,
             message:'',

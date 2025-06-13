@@ -1,4 +1,4 @@
-import Contact from "@/components/ui/section/Contact";
+import {Contact} from "@/components/ui/section/Contact";
 import { Dock } from "@/components/ui/section/FloatingDock";
 import { Footer } from "@/components/ui/section/FooterSection";
 import HeroSection from "@/components/ui/section/HeroSection";
