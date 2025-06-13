@@ -215,13 +215,13 @@ export const CloseIcon = () => {
 
 const cards = [
   {
-    description: "Basically contributed nothing😑🙄🥱💀",
+    description: "Platform for question and answer",
     title: "Faith Answered",
     src: "https://faithanswered.com/build/assets/logo-CY90ruqA.svg",
     ctaText: "View",
     ctaLink: "https://ui.aceternity.com/templates",
     content: () => {
-      return <p>Awkward hehe😁😐🥴🤡</p>;
+      return <p>I created the frontend of Faith Answered, a question-and-answer platform built using Next.js to provide fast performance through server-side rendering and static generation. The platform is designed with a clean, calming, and user-friendly interface that encourages thoughtful engagement and discussion. I implemented a responsive layout to ensure seamless usability across all devices, integrating React components for modular and reusable UI elements. For styling, I used Tailwind CSS, which allowed for rapid development and consistent design throughout the site. The frontend includes dynamic routing for individual question and answer pages, intuitive navigation, and smooth transitions to enhance the user experience. The codebase is structured and maintainable, focusing on accessibility and performance to support future scalability.</p>;
     },
   },
   {
@@ -247,11 +247,11 @@ const cards = [
     },
   },
   {
-    description: "Created with Html,Css and JS",
-    title: "E-commerce Website",
-    src: "https://logocreator.io/wp-content/uploads/2023/11/BlogThumbnail_755ead76-44e0-4627-bc93-55b0ad9c6722.jpg",
+    description: "Created with Moviedb API,Next Js",
+    title: "Movie App",
+    src: "dj",
     ctaText: "View",
-    ctaLink: "https://ui.aceternity.com/templates",
+    ctaLink: "https://github.com/KSaayushofficial/MovieApp",
     content: () => {
       return (
         <p>
@@ -293,15 +293,46 @@ const cards = [
   },
 
   {
-    description: "I am not a machine bro.It's ongoing...",
-    title: "Direkty- A business directory platform",
-    src: "https://www.shutterstock.com/image-vector/pixel-location-point-sign-symbol-600nw-1977711641.jpg",
+    description: "Created with Next Js and React Js",
+    title: "AI_CoachApp- A platform for students",
+    src: "AI_CoachApp",
     ctaText: "View",
-    ctaLink: "https://ui.aceternity.com/templates",
+    ctaLink: "https://github.com/KSaayushofficial/AI_CoachApp",
     content: () => {
       return (
         <p>
-          Suspense..Development in progress! Stay Back🚫🙅‍♂️
+          I developed the frontend of the AI Coach for Students app, an intelligent educational assistant designed to support students in their academic journey. Built with Next.js, the platform leverages server-side rendering for fast loading and improved SEO. The interface is clean, responsive, and student-friendly, with intuitive navigation that adapts seamlessly across devices. I used React components to build reusable UI blocks, and styled the app using Tailwind CSS for a consistent, modern look. The app features interactive input sections where students can ask questions or request study help, with dynamic routing to handle personalized feedback pages. I integrated animations and smooth transitions using Framer Motion to enhance the interactive learning experience. The codebase is modular and optimized for performance, enabling future integration with AI APIs for real-time guidance and personalized responses.
+        </p>
+      );
+    },
+  },
+  {
+    description: "Created with Next Js and React Js",
+    title: "Blog App",
+    src: "blog app",
+    ctaText: "View",
+    ctaLink: "https://github.com/KSaayushofficial/blogapp",
+    content: () => {
+      return (
+        <p>
+        I built the frontend of my Blog App using Next.js, combining performance and simplicity to create a fast and responsive platform for sharing ideas. I focused on crafting a clean, minimal interface that feels easy and enjoyable to read—whether you're on a phone, tablet, or desktop. I used React for building modular components and Tailwind CSS for styling, which helped me keep the design consistent and development efficient.
+One of my favorite parts was implementing dynamic routing to generate blog post pages on the fly, making it easy to scale and manage content. I added features like category filters, author info, and smooth page transitions to make the reading experience feel seamless and modern. The whole UI is built to be lightweight, accessible, and user-friendly. I kept the codebase well-organized so it's easy to maintain and expand later—possibly with Markdown support or a CMS integration. modern look. The app features interactive input sections where students can ask questions or request study help, with dynamic routing to handle personalized feedback pages. I integrated animations and smooth transitions using Framer Motion to enhance the interactive learning experience. The codebase is modular and optimized for performance, enabling future integration with AI APIs for real-time guidance and personalized responses.
+        </p>
+      );
+    },
+  },
+  {
+    description: "Created with Next Js and React Js",
+    title: "E commerce App ",
+    src: "e-commerce",
+    ctaText: "View",
+    ctaLink: "http://github.com/KSaayushofficial/nextjs-commerce",
+    content: () => {
+      return (
+        <p>
+        I created the frontend of an eCommerce app with a strong focus on performance, responsiveness, and clean design. Built with Next.js, the app uses server-side rendering and static generation to ensure fast load times and a smooth shopping experience. I designed the layout to be intuitive and mobile-friendly, making sure users can easily browse, search, and interact with products across any device.
+
+I used React to build dynamic, reusable components like product cards, category filters, and a cart system. For styling, I went with Tailwind CSS, which allowed me to build a consistent design system while keeping the codebase clean and manageable. I also implemented dynamic routing for product pages, hover effects, and subtle animations to make the UI feel more polished and engaging.
         </p>
       );
     },
