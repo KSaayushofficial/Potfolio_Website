@@ -249,7 +249,7 @@ const cards = [
   {
     description: "Created with Moviedb API,Next Js",
     title: "Movie App",
-    src: "dj",
+    src: "/dj",
     ctaText: "View",
     ctaLink: "https://github.com/KSaayushofficial/MovieApp",
     content: () => {
@@ -269,33 +269,11 @@ const cards = [
       );
     },
   },
-  {
-    description: "Created with Html,Css and CoreJs",
-    title: "Hackial-Social media app",
-    src: "https://static.vecteezy.com/system/resources/previews/023/986/939/non_2x/tiktok-logo-tiktok-logo-transparent-tiktok-icon-transparent-free-free-png.png",
-    ctaText: "View",
-    ctaLink: "https://github.com/KSaayushofficial/Stop-Watch",
-    content: () => {
-      return (
-        <p>
-          I created a social media website named "Hackial" using CoreJS, HTML,
-          and CSS. The platform is designed to offer users an engaging
-          experience with features typical of modern social media sites, such as
-          user profiles, interactive posts, and real-time communication
-          elements. I utilized CoreJS for the website’s logic and interactivity,
-          ensuring a smooth and dynamic experience. The design was made
-          responsive and accessible, with CSS handling the layout, animations,
-          and styling. This project allowed me to combine fundamental web
-          technologies to build a complete, functional social media platform.
-        </p>
-      );
-    },
-  },
 
   {
     description: "Created with Next Js and React Js",
     title: "AI_CoachApp- A platform for students",
-    src: "AI_CoachApp",
+    src: "/AI_CoachApp",
     ctaText: "View",
     ctaLink: "https://github.com/KSaayushofficial/AI_CoachApp",
     content: () => {
@@ -309,7 +287,7 @@ const cards = [
   {
     description: "Created with Next Js and React Js",
     title: "Blog App",
-    src: "blog app",
+    src: "/blog app",
     ctaText: "View",
     ctaLink: "https://github.com/KSaayushofficial/blogapp",
     content: () => {
@@ -324,7 +302,7 @@ One of my favorite parts was implementing dynamic routing to generate blog post 
   {
     description: "Created with Next Js and React Js",
     title: "E commerce App ",
-    src: "e-commerce",
+    src: "/e-commerce",
     ctaText: "View",
     ctaLink: "http://github.com/KSaayushofficial/nextjs-commerce",
     content: () => {
