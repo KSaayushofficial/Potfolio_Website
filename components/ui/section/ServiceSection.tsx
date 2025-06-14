@@ -15,48 +15,51 @@ import { Cover } from "../cover";
 export function Services() {
   const features = [
     {
-      title: "Built for developers",
+      title: "1. 🧩 Frontend Development",
       description:
-        "Built for engineers, developers, dreamers, thinkers and doers.",
+        "Developing responsive and interactive user interfaces using React.js and modern web technologies.",
       icon: <IconTerminal2 />,
     },
     {
-      title: "Ease of use",
+      title: "2. ⚛️ React Component Design",
       description:
-        "It's as easy as using an Apple, and as expensive as buying one.",
+        "Creating reusable, optimized components for scalable web applications using React and JSX.",
       icon: <IconEaseInOut />,
     },
     {
-      title: "Pricing like no other",
+      title: "3. 🌐 Next.js Integration",
       description:
-        "Our prices are best in the market. No cap, no lock, no credit card required.",
+        "Building fast, SEO-friendly applications with server-side rendering and routing using Next.js.",
       icon: <IconCurrencyDollar />,
     },
     {
-      title: "100% Uptime guarantee",
-      description: "We just cannot be taken down by anyone.",
+      title: "4. 🎨 UI/UX Implementation",
+      description:
+        "Translating Figma or design mockups into clean, pixel-perfect React interfaces with Tailwind CSS.",
       icon: <IconCloud />,
     },
     {
-      title: "Multi-tenant Architecture",
-      description: "You can simply share passwords instead of buying new seats",
+      title: "5. 🚀 Performance Optimization",
+      description:
+        "Improving app speed and efficiency through code-splitting, lazy loading, and performance best practices.",
       icon: <IconRouteAltLeft />,
     },
     {
-      title: "24/7 Customer Support",
+      title: "6. 🛠️ State Management",
       description:
-        "We are available a 100% of the time. Atleast our AI Agents are.",
+        "Managing component and global state effectively using hooks like useState, useEffect, and Context API.",
       icon: <IconHelp />,
     },
     {
-      title: "Money back guarantee",
+      title: "7. 🔗 API Integration",
       description:
-        "If you donot like EveryAI, we will convince you to like us.",
+        "Fetching and displaying dynamic data from REST APIs with React and Axios or Fetch.",
       icon: <IconAdjustmentsBolt />,
     },
     {
-      title: "And everything else",
-      description: "I just ran out of copy ideas. Accept my sincere apologies",
+      title: "8. 📱 Responsive Design",
+      description:
+        "Ensuring smooth, mobile-first experiences across all screen sizes using Tailwind and Flex/Grid layouts.",
       icon: <IconHeart />,
     },
   ];

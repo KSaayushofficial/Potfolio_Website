@@ -73,7 +73,7 @@ function HeroSection() {
             <Cover>Developer</Cover>
           </h2>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/aayush-kumar-008174297/"
             className=" transition-all ease-in-out mr-auto py-[10px] font-[600]"
           >
             <button className="inline-flex h-12 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
@@ -96,7 +96,7 @@ function HeroSection() {
       </div>
       <div className="w-[90%] mx-auto py-[30px] flex flex-col items-center z-2">
         <a
-          href="#"
+          href="https://www.linkedin.com/in/aayush-kumar-008174297/"
           className="max-w-[130px] w-full h-[40px] flex justify-center items-center border border-1 border-[#333333] text-white font-[600] rounded-[30px] mx-auto pb-[2px]"
         >
           Hire Me
